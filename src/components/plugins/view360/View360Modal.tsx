@@ -5,10 +5,9 @@ import ImageListbox from "@/components/ImageListbox";
 import { projections } from "@/constants/projections";
 import View360, { ControlBar, LoadingSpinner } from "@egjs/react-view360";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 
 export default function View360Modal(): JSX.Element {
-  const [ready, setReady] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projection, setProjection] = useState(projections[0]);
 
@@ -20,14 +19,7 @@ export default function View360Modal(): JSX.Element {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    // check if document is ready
-    if (document.readyState === "complete") {
-      setReady(true);
-    }
-  }, []);
-
-  return ready ? (
+  return (
     <>
       <div className=" flex items-center justify-center">
         <button
@@ -66,20 +58,22 @@ export default function View360Modal(): JSX.Element {
                 <Dialog.Panel className="w-full max-w-7xl  transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col w-full justify-between gap-5 md:flex-row md:space-x-5">
                     <div className="w-full md:w-[1024px]">
-                      <View360
-                        key={projection.id}
-                        className="is-16by9 rounded-lg"
-                        projection={projection.image}
-                        hotspot={{
-                          zoom: false,
-                        }}
-                        plugins={[new ControlBar(), new LoadingSpinner()]}
-                      >
-                        <HotspotsList
-                          changeProjection={changeProjection}
-                          projection={projection}
-                        />
-                      </View360>
+                      {typeof document !== "undefined" && (
+                        <View360
+                          key={projection.id}
+                          className="is-16by9 rounded-lg"
+                          projection={projection.image}
+                          hotspot={{
+                            zoom: false,
+                          }}
+                          plugins={[new ControlBar(), new LoadingSpinner()]}
+                        >
+                          <HotspotsList
+                            changeProjection={changeProjection}
+                            projection={projection}
+                          />
+                        </View360>
+                      )}
                     </div>
                     <div className="flex flex-col space-y-3 shrink-0">
                       <p className="text-2xl font-medium text-white bg-black p-3 text-center rounded-md">
@@ -105,7 +99,5 @@ export default function View360Modal(): JSX.Element {
         </Dialog>
       </Transition>
     </>
-  ) : (
-    <div />
   );
 }
