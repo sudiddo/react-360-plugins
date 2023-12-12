@@ -1,4 +1,4 @@
-import View360Modal from "@/components/plugins/view360/View360Modal";
+import View360Component from "@/components/plugins/view360/View360Component";
 
 import "@egjs/react-view360/css/view360.min.css";
 
@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         {/* Content */}
         <div className="mt-10 flex flex-row ">
-          <View360Modal />
+          <View360Component />
         </div>
       </div>
     </main>
