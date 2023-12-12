@@ -66,6 +66,7 @@ export default function View360Modal(): JSX.Element {
                           hotspot={{
                             zoom: false,
                           }}
+                          autoInit
                           plugins={[new ControlBar(), new LoadingSpinner()]}
                         >
                           <HotspotsList
