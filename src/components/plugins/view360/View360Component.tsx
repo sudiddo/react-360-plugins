@@ -3,7 +3,7 @@
 import HotspotsList from "@/components/plugins/view360/HotspotsList";
 import ImageListbox from "@/components/ImageListbox";
 import { projections } from "@/constants/projections";
-import View360 from "@egjs/react-view360";
+import View360, { ControlBar, LoadingSpinner } from "@egjs/react-view360";
 import { useEffect, useRef, useState } from "react";
 
 export default function View360Component() {
@@ -31,7 +31,7 @@ export default function View360Component() {
           key={projection.id || 1}
           className="is-16by9 rounded-lg"
           projection={projection.image}
-          // plugins={[new ControlBar(), new LoadingSpinner()]}
+          plugins={[new ControlBar(), new LoadingSpinner()]}
         >
           <HotspotsList
             changeProjection={changeProjection}
