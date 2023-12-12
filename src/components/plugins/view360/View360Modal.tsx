@@ -5,37 +5,40 @@ import ImageListbox from "@/components/ImageListbox";
 import { projections } from "@/constants/projections";
 import View360, { ControlBar, LoadingSpinner } from "@egjs/react-view360";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
-type Props = {
-  isOpen: boolean;
-  closeModal: () => void;
-  openModal: () => void;
-};
-
-export default function View360Modal({
-  isOpen,
-  closeModal,
-  openModal,
-}: Props): JSX.Element {
+export default function View360Modal(): JSX.Element {
+  const [ready, setReady] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [projection, setProjection] = useState(projections[0]);
 
   const changeProjection = (id: number) => {
     setProjection(projections[id - 1]);
   };
 
-  return (
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    // check if document is ready
+    if (document.readyState === "complete") {
+      setReady(true);
+    }
+  }, []);
+
+  return ready ? (
     <>
       <div className=" flex items-center justify-center">
         <button
-          onClick={openModal}
+          onClick={() => setIsModalOpen(true)}
           className="bg-black rounded-lg text-white text-lg font-medium px-5 py-3 hover:opacity-70"
         >
           <p>View 360</p>
         </button>
       </div>
 
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isModalOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -102,5 +105,7 @@ export default function View360Modal({
         </Dialog>
       </Transition>
     </>
+  ) : (
+    <div />
   );
 }

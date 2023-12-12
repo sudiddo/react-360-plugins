@@ -1,13 +1,8 @@
-"use client";
-
 import View360Modal from "@/components/plugins/view360/View360Modal";
+
 import "@egjs/react-view360/css/view360.min.css";
-import { Dialog } from "@headlessui/react";
-import { useState } from "react";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <main className="flex justify-center p-5">
       <div className="md:max-w-7xl w-full">
@@ -28,11 +23,7 @@ export default function Home() {
         </div>
         {/* Content */}
         <div className="mt-10 flex flex-row ">
-          <View360Modal
-            closeModal={() => setIsModalOpen(false)}
-            isOpen={isModalOpen}
-            openModal={() => setIsModalOpen(true)}
-          />
+          <View360Modal />
         </div>
       </div>
     </main>
