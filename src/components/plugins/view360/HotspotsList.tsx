@@ -1,7 +1,7 @@
 "use client";
 
-import hotspots from "@/constants/hotspots";
-import { projections } from "@/constants/projections";
+import hotspots from "@/components/plugins/view360/constants/hotspots";
+import { projections } from "@/components/plugins/view360/constants/projections";
 import { Hotspot, ImageHotspot } from "@/types/hotspots";
 import Image from "next/image";
 import React from "react";

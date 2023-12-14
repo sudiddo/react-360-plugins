@@ -1,8 +1,8 @@
 "use client";
 
 import HotspotsList from "@/components/plugins/view360/HotspotsList";
-import ImageListbox from "@/components/ImageListbox";
-import { projections } from "@/constants/projections";
+import ImageListbox from "@/components/plugins/view360/ImageListbox";
+import { projections } from "@/components/plugins/view360/constants/projections";
 import View360, { ControlBar, LoadingSpinner } from "@egjs/react-view360";
 import { useEffect, useRef, useState } from "react";
 
@@ -24,12 +24,12 @@ export default function View360Component() {
   return !ready ? (
     <div>Loading</div>
   ) : (
-    <div className="flex flex-col w-full justify-between gap-5 md:flex-row md:space-x-5">
-      <div className="w-full md:w-[1024px]">
+    <div className="flex flex-col w-full justify-between gap-5">
+      <div className="w-full">
         <View360
           ref={viewerRef}
           key={projection.id || 1}
-          className="is-16by9 rounded-lg"
+          className="is-16by9"
           projection={projection.image}
           plugins={[new ControlBar(), new LoadingSpinner()]}
         >
@@ -39,10 +39,8 @@ export default function View360Component() {
           />
         </View360>
       </div>
-      <div className="flex flex-col space-y-3 shrink-0">
-        <p className="text-2xl font-medium text-white bg-black p-3 text-center rounded-md">
-          View 360
-        </p>
+      <div className="flex flex-col w-[300px] space-y-4 h-fit shrink-0 border rounded-md p-5">
+        <p className="text-2xl font-bold">View 360</p>
         <ImageListbox projection={projection} setProjection={setProjection} />
         <a
           href="https://naver.github.io/egjs-view360/"

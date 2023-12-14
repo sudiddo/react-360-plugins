@@ -1,6 +1,6 @@
 "use client";
 
-import { projections } from "@/constants/projections";
+import { projections } from "@/components/plugins/view360/constants/projections";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 import React, { Fragment } from "react";
