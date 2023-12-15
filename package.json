@@ -12,10 +12,12 @@
     "@egjs/react-view360": "^4.0.0-beta.7",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@react-spring/parallax": "^9.7.3",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-photo-sphere-viewer": "^4.0.2-psv5.4.4"
+    "react-photo-sphere-viewer": "^4.0.2-psv5.4.4",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "@types/node": "^20",
