@@ -27,7 +27,11 @@ function HomePage() {
             <SectionLayout>
               <div className="flex w-full flex-col text-2xl space-y-3 md:space-y-5 md:text-4xl font-bold items-center relative">
                 <p>Thank you for reading! ✌️ </p>
-                <p className="text-base font-medium">Diddo ©2023</p>
+                <p className="text-base underline underline-offset-4 font-medium">
+                  <a href="https://sudiddo.me" target="_blank">
+                    Diddo ©2023
+                  </a>
+                </p>
                 <button
                   onClick={() => scroll(0)}
                   className="border border-pink-400 bg-pink-300 rounded-lg p-3 text-white font-bold text-lg mt-10 hover:scale-110 transition-all ease-in-out duration-200"
